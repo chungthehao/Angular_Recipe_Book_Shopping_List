@@ -11,7 +11,9 @@ export class RecipeListComponent implements OnInit {
 	// 'Recipe[]': cho Typescript biết đây là 1 mảng các obj Recipe
 	recipes: Recipe[] = [
 		new Recipe('A Test Recipe', 'This is simply a test', 
-			'https://c.pxhere.com/photos/8b/0f/food_meat_recipe_power_pork_dishes-604134.jpg!d')
+			'https://c.pxhere.com/photos/8b/0f/food_meat_recipe_power_pork_dishes-604134.jpg!d'),
+		new Recipe('A Test Recipe', 'This is simply a test', 
+			'https://c.pxhere.com/photos/8b/0f/food_meat_recipe_power_pork_dishes-604134.jpg!d'),
 	];
 
 	constructor() { }
