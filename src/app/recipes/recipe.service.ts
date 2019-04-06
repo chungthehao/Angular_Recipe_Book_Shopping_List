@@ -1,8 +1,10 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
+@Injectable()
 export class RecipeService {
     recipeSelected = new EventEmitter<Recipe>(); // It will hold some Recipe data
 
@@ -26,7 +28,9 @@ export class RecipeService {
                 new Ingredient('Buns', 2),
                 new Ingredient('Onion', 10)
             ]),
-	];
+    ];
+    
+    constructor(private shoppingListService: ShoppingListService) {}
 
     getRecipes() {
         /**
@@ -36,6 +40,16 @@ export class RecipeService {
          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
          */
         return this.recipes.slice(); 
+    }
+
+    addIngredientsToShoppingList(ingredients: Ingredient[]) {
+        this.shoppingListService.addIngredients(ingredients);
+
+        // ingredients.forEach(
+        //     (ingredient) => {
+        //         this.shoppingListService.addIngredient(ingredient); // A lot of unnecessary event emissions!!
+        //     }
+        // );
     }
 
 }
