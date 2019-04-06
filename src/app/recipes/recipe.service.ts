@@ -1,6 +1,9 @@
+import { EventEmitter } from '@angular/core';
+
 import { Recipe } from './recipe.model';
 
 export class RecipeService {
+    recipeSelected = new EventEmitter<Recipe>(); // It will hold some Recipe data
 
     // 'Recipe[]': cho Typescript biết đây là 1 mảng các obj Recipe
 	private recipes: Recipe[] = [
